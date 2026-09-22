@@ -3,6 +3,8 @@
 #include <string.h>
 #include <stdbool.h>
 
+#include "sort.h"
+
 void swap(int* a, int* b)
 {
     int t = *a;
@@ -155,20 +157,20 @@ void msort(void* arr, size_t len, size_t elemSize, int(*compareFunc)(const void*
 
 void swapElems(void* a, void* b, size_t elemSize)
 {
-    char* tmp = calloc(1, elemSize);
+    //char* tmp = (char* ) calloc(1, elemSize);
     
-    memmove(tmp, a, elemSize);
-    memmove(a, b, elemSize);
-    memmove(b, tmp, elemSize);
+    //memmove(tmp, a, elemSize);
+    //memmove(a, b, elemSize);
+    //memmove(b, tmp, elemSize);
 
-    free(tmp);
+    //free(tmp);
     
-    //for (size_t i = 0; i < elemSize; i++)
-    //{
-    //    char tmp = *(char* ) (b + i);
-    //    *(char* ) (b + i) = *(char* ) (a + i);
-    //    *(char* ) (a + i) = tmp;
-    //}
+    for (size_t i = 0; i < elemSize; i++)
+    {
+        char tmp = *(char* ) (b + i);
+        *(char* ) (b + i) = *(char* ) (a + i);
+        *(char* ) (a + i) = tmp;
+    }
 }
 
 void moveElem(void* dest, const void* src, size_t elemSize)
