@@ -1,0 +1,1 @@
+gcc -Iinclude src/main.c src/sort.c src/comparators.c src/text.c -o onegin -O2

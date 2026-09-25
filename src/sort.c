@@ -107,7 +107,6 @@ void msort(void* arr, size_t len, size_t elemSize, int(*compareFunc)(const void*
         if ((*compareFunc)(arr, arr + elemSize) > 0) {
             swapElems(arr, arr + elemSize, elemSize);
         }
-        //printf("%d %d\n", *(int *) arr, *(int *) (arr + elemSize));
         return;
     }
 
@@ -129,24 +128,16 @@ void msort(void* arr, size_t len, size_t elemSize, int(*compareFunc)(const void*
     for (size_t i = 0; i < len; i++) 
     {
         if (iLeft >= leftSize) {
-            //arr[i] = right[iRight];
             memmove(arr + i * elemSize, right + iRight * elemSize, elemSize);
-            //moveElem(arr + i * elemSize, right + iRight * elemSize, elemSize);
             iRight++;
         } else if (iRight >= rightSize) {
-            //arr[i] = left[iLeft];
             memmove(arr + i * elemSize, left + iLeft * elemSize, elemSize);
-            //moveElem(arr + i * elemSize, left + iLeft * elemSize, elemSize);
             iLeft++;
         } else if ((*compareFunc)(left + iLeft * elemSize, right + iRight * elemSize) > 0) {
-            //arr[i] = right[iRight];
             memmove(arr + i * elemSize, right + iRight * elemSize, elemSize);
-            //moveElem(arr + i * elemSize, right + iRight * elemSize, elemSize);
             iRight++;
         } else {
-            //arr[i] = left[iLeft];
             memmove(arr + i * elemSize, left + iLeft * elemSize, elemSize);
-            //moveElem(arr + i * elemSize, left + iLeft * elemSize, elemSize);
             iLeft++;
         }
     }
@@ -156,15 +147,7 @@ void msort(void* arr, size_t len, size_t elemSize, int(*compareFunc)(const void*
 }
 
 void swapElems(void* a, void* b, size_t elemSize)
-{
-    //char* tmp = (char* ) calloc(1, elemSize);
-    
-    //memmove(tmp, a, elemSize);
-    //memmove(a, b, elemSize);
-    //memmove(b, tmp, elemSize);
-
-    //free(tmp);
-    
+{ 
     for (size_t i = 0; i < elemSize; i++)
     {
         char tmp = *(char* ) (b + i);
